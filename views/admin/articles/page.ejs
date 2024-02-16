@@ -1,0 +1,36 @@
+<%- include ('../../partials/header') %>
+<%- include ('../../partials/homenavbar') %>
+
+<body>
+    <div class="container">
+        <% result.articles.rows.forEach(article => {%>
+        <div class="card">
+            <div class="card-header">
+                <h2><%= article.title %></h2>               
+            </div>
+            <div class="card-body">
+                <a href="/<%= article.slug %>" class="btn btn-success">Leia Mais</a>
+            </div>
+        </div><br />
+        
+        <% }); %>
+
+        <div class="row">
+            <div class="col col-12">
+                <% if(result.page > 1) { %>
+                    <a href="/articles/page/<%= result.page - 1 %>" class="btn btn-primary" style="float:left";><< Anterior </a>
+                <% } %>
+
+                
+
+                <% if(result.next) {%>
+                    <a href="/articles/page/<%= result.page + 1 %>" class="btn btn-primary" style="float:right";>Próxima >></a>
+                    <% } %>
+            </div>
+            
+        </div>
+    </div>
+</body>
+
+
+<%- include ('../../partials/footer') %>

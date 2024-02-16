@@ -1,0 +1,43 @@
+<%- include ('../../partials/header') %>
+<%- include ('../../partials/navbar') %>
+
+<div class="container">
+    <hr>
+    <h2>Categorias</h2>
+    <a href="/admin/users/create" class="btn btn-success">Criar Usuário</a>
+    <hr>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <% users.forEach(user => { %>
+                <tr>
+                    <td><%= user.id %></td>
+                    <td><%= user.email %></td>
+                </tr>
+
+            <% }) %>
+
+
+        </tbody>
+    </table>
+</div>
+
+
+<%- include ('../../partials/footer') %>
+<script>
+    //script para confirmação de exclusão
+    function confirmDelete(event, form){
+        event.preventDefault();
+        var decision = confirm('Deseja realmente excluir essa categoria?');
+        if (decision) {
+            form.submit();
+        }
+    }
+</script>
